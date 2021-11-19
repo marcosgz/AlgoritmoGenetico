@@ -7,12 +7,15 @@ public class AlgoritmoGenetico {
   public static final double PROB_CRUZAMENTO = 0.8;
   public static final double PROB_MUTACAO = 0.1;
 
-  public static final String CROMOSSOMOS = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  public static final String ALVO = "Manfred Heil";
+  // public static final String CROMOSSOMOS = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  // public static final String ALVO = "Manfred Heil";
+  public static final String CROMOSSOMOS = "01";
+  public static final String ALVO = "11111111111111111111";
 
   public static void main(String[] args) {
     Individuo[] populacao = new Individuo[TAM_POPULACAO];
 
+    System.out.println("Alvo: " + ALVO);
     iniciaPopulacao(populacao);
     System.out.println("------------------------");
 
@@ -33,7 +36,7 @@ public class AlgoritmoGenetico {
           }
 
           Individuo filho = cruzarIndividuo(populacao[pai], populacao[mae]);
-          
+
           if (probabilidade < PROB_MUTACAO) {
             mutarIndividuo(filho);
           }
@@ -75,21 +78,21 @@ public class AlgoritmoGenetico {
     for (int i = 0; i < TAM_POPULACAO; i++) {
       populacao[i] = new Individuo();
     }
-    for (int i = 0; i < 10; i++) {
-      for (char gene : ALVO.toCharArray()) {
-        int individuoIndex = (int) (Math.random() * TAM_POPULACAO);
-        int geneIndex = (int) (Math.random() * ALVO.length());
-        populacao[individuoIndex].setGene(geneIndex, gene);
-      }
-    }
+    // for (int i = 0; i < 10; i++) {
+    //   for (char gene : ALVO.toCharArray()) {
+    //     int individuoIndex = (int) (Math.random() * TAM_POPULACAO);
+    //     int geneIndex = (int) (Math.random() * ALVO.length());
+    //     populacao[individuoIndex].setGene(geneIndex, gene);
+    //   }
+    // }
   }
 
   // Crossover
-  // Cruzamento uniponto com ponto de corte randomico: 
-  // --> Mergeia estes 2 cromossomos em um novo, sendo de 0 a ponto de corte, o cromossomo pai; 
+  // Cruzamento uniponto com ponto de corte randomico:
+  // --> Mergeia estes 2 cromossomos em um novo, sendo de 0 a ponto de corte, o cromossomo pai;
   // --> sendo do ponto de corte ao final do trajto, o cromossomo mae;
   // Exemplo:
-  // pai: abcdefghijklmnopqrstuvwxyz 
+  // pai: abcdefghijklmnopqrstuvwxyz
   // mae: ABCDEFGHIJKLMNOPQRSTUVWXYZ
   // ponto de corte: 10
   // (pai:abcdefghij | mae:KLMNOPQRSTUVWXYZ) => filho: abcdefghijKLMNOPQRSTUVWXYZ
