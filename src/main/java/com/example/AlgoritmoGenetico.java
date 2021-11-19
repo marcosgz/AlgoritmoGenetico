@@ -1,14 +1,19 @@
 package com.example;
 
 public class AlgoritmoGenetico {
+  // public static final int TAM_POPULACAO = 100;
+  // public static final int GERACOES = 9000;
+  // public static final int NUM_CRUZAMENTOS = 20;
+  // public static final double PROB_CRUZAMENTO = 0.8;
+  // public static final double PROB_MUTACAO = 0.1;
+  // public static final String CROMOSSOMOS = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  // public static final String ALVO = "Manfred Heil";
+
   public static final int TAM_POPULACAO = 100;
-  public static final int GERACOES = 9000;
+  public static final int GERACOES = 50;
   public static final int NUM_CRUZAMENTOS = 20;
   public static final double PROB_CRUZAMENTO = 0.8;
   public static final double PROB_MUTACAO = 0.1;
-
-  // public static final String CROMOSSOMOS = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  // public static final String ALVO = "Manfred Heil";
   public static final String CROMOSSOMOS = "01";
   public static final String ALVO = "11111111111111111111";
 
@@ -124,17 +129,17 @@ public class AlgoritmoGenetico {
     individuo.setGene(r2, aux);
   }
 
-  public static Individuo getMelhorIndividuo(Individuo[] populacao) {
+  public static Individuo getMelhorIndividuo(Individuo[] pop) {
     int posicao = 0;
-    int melhorPontuacao = populacao[posicao].getPontuacao();
+    int melhorPontuacao = pop[posicao].getPontuacao();
 
     for (int i = 1; i < TAM_POPULACAO; i++) {
-      if (populacao[i].getPontuacao() > melhorPontuacao) {
-        melhorPontuacao = populacao[i].getPontuacao();
+      if (pop[i].getPontuacao() > melhorPontuacao) {
+        melhorPontuacao = pop[i].getPontuacao();
         posicao = i;
       }
     }
 
-    return populacao[posicao];
+    return pop[posicao];
   }
 }
